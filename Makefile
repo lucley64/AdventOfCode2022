@@ -9,7 +9,15 @@ SRC = $(wildcard $(srcdir)*.cpp)
 HEAD = $(wildcard $(srcdir)*.h)
 OBJ = $(subst $(srcdir), $(bindir), $(SRC:.cpp=.o))
 
-all: $(PROG)
+all: clean build
+
+.PHONY: launch build clean
+
+
+launch: 
+	$(PROG)
+
+build: $(PROG)
 
 $(PROG) : $(OBJ)
 	$(CC) $^ -o $@ $(LNK)
@@ -17,8 +25,5 @@ $(PROG) : $(OBJ)
 $(bindir)%.o : $(srcdir)%.cpp
 	$(CC) -c $^ -o $@
 
-.PHONY: launch
-
-
-launch: 
-	$(PROG)
+clean: 
+	rm $(PROG) $(OBJ)
