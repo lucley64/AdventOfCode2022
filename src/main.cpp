@@ -2,6 +2,7 @@
 #include "day1.h"
 #include "day2.h"
 #include "day3.h"
+#include "day4.h"
 
 using namespace std;
 
@@ -12,6 +13,7 @@ int main(int argc, char const *argv[])
     cout << "   1- Calorie Counting" << endl;
     cout << "   2- Rock Paper Scissors" << endl;
     cout << "   3- Rucksack Reorganization" << endl;
+    cout << "   4- Camp Cleanup" << endl;
 
     cin >> choice;
 
@@ -27,10 +29,11 @@ int main(int argc, char const *argv[])
         day3();
         break;
     case 4:
-        cout << "WTF?" << endl;
+        day4();
         break;
 
     default:
+        cout << "WTF?" << endl;
         break;
     }
 
