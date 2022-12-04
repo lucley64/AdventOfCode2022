@@ -9,8 +9,8 @@
 void day4Test();
 void day4True();
 std::vector<std::string> readInput(const std::string &);
-int countContain(const std::vector<std::string> &);
-bool isContainingOther(const std::string &);
+int countOverlap(const std::vector<std::string> &);
+bool isOverlappingOther(const std::string &);
 
 void day4()
 {
@@ -22,13 +22,13 @@ void day4()
 void day4Test()
 {
     auto input = readInput("../res/day4Input/inputTest.txt");
-    std::cout << "There are " << countContain(input) << " pairs containing the other in test" << std::endl;
+    std::cout << "There are " << countOverlap(input) << " pairs overlapping the other in test" << std::endl;
 }
 
 void day4True()
 {
     auto input = readInput("../res/day4Input/input.txt");
-    std::cout << "There are " << countContain(input) << " pairs containing the other" << std::endl;
+    std::cout << "There are " << countOverlap(input) << " pairs overlapping the other" << std::endl;
 }
 
 std::vector<std::string> readInput(const std::string &fileName)
@@ -51,13 +51,13 @@ std::vector<std::string> readInput(const std::string &fileName)
     return lines;
 }
 
-int countContain(const std::vector<std::string> &lines)
+int countOverlap(const std::vector<std::string> &lines)
 {
     int count = 0;
 
     for (const auto &line : lines)
     {
-        if (isContainingOther(line))
+        if (isOverlappingOther(line))
         {
             count++;
         }
@@ -66,7 +66,7 @@ int countContain(const std::vector<std::string> &lines)
     return count;
 }
 
-bool isContainingOther(const std::string &line)
+bool isOverlappingOther(const std::string &line)
 {
     std::stringstream lineStream{line};
     std::string segment;
@@ -90,7 +90,7 @@ bool isContainingOther(const std::string &line)
 
 
 
-    if ((startElf1 <= startElf2 && endElf1 >= endElf2) || (startElf2 <= startElf1 && endElf2 >= endElf1))
+    if ((startElf1 <= endElf2 && endElf1 >= startElf2) || (startElf2 <= endElf1 && endElf2 >= startElf1))
     {
         return true;
     }
