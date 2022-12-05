@@ -4,11 +4,11 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include "utils.h"
 
 
 void day4Test();
 void day4True();
-std::vector<std::string> readInput(const std::string &);
 int countOverlap(const std::vector<std::string> &);
 bool isOverlappingOther(const std::string &);
 
@@ -31,25 +31,6 @@ void day4True()
     std::cout << "There are " << countOverlap(input) << " pairs overlapping the other" << std::endl;
 }
 
-std::vector<std::string> readInput(const std::string &fileName)
-{
-    std::ifstream file{fileName};
-    std::vector<std::string> lines;
-    std::string line;
-
-    if (file.is_open())
-    {
-
-        while (getline(file, line))
-        {
-            lines.push_back(line);
-        }
-
-        file.close();
-    }
-
-    return lines;
-}
 
 int countOverlap(const std::vector<std::string> &lines)
 {
